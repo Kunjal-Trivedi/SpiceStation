@@ -1,0 +1,80 @@
+<% layout('layout') -%>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+
+			<% if(message.length > 0) { %>
+			<div class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>				
+				</button>
+				<%= message %>
+			</div>
+			<% } %>
+
+			<% for (var i = 0; i < foundCart.items.length; i++) { %>
+			<div class="list-group">	
+				<span class="list-group-item">	
+					<div class="row">
+						<div class="col-md-3">
+							<span><img src="<%= foundCart.items[i].item.image %>" class="product-image"></span>
+						</div>
+						<div class="col-md-6">
+							<p class="list-group-item-heading"><%= foundCart.items[i].item.name %></p>
+						</div>
+						<div class="col-md-3">
+								<b><p><%= foundCart.items[i].quantity %></p>
+									<p>$<%= foundCart.items[i].price %></p></b>
+									<!--<p><%= foundCart.items[i].item_id %></p>-->
+
+							<form method="post" action="/remove">
+								<!--<input type="hidden" name="item_id" value="<%= foundCart.items[i].item_id %>">-->
+								<input type="hidden" name="item" value="<%= foundCart.items[i]._id %>"> 
+								<input type="hidden" name="price" value="<%= foundCart.items[i].price %>"></form></b>
+								<button type="submit" class="btn btn-danger">Remove</button>
+							</form>
+						</div>
+					</div>
+				</span>
+			</div>
+			<% } %>
+			<div class = "list-group">
+				<span class="list-group-item">
+					<div class= "row">
+							<div class="col-md-10">
+									<div class="col-md-10">
+											<% quantity = 0 %>
+											<% amount = 0 %>
+											<b><p class="Total">Total Items: <% for (var i = 0; i < foundCart.items.length; i++) { %>
+												<% quantity += foundCart.items[i].quantity} %><%= quantity %></p>
+											<p class="total amt">Total Amount: <% for (var i = 0; i < foundCart.items.length; i++) { %>
+												<% amount += foundCart.items[i].price} %>$<%= amount %></p></b>
+									</div>
+							<form method="post" action="/charge">
+								<script
+								src="https://checkout.stripe.com/checkout.js"
+								class="stripe-button"
+								data-key="pk_test_p1G0HMw12H1lcJ4wvkTOb2EF";
+								
+								data-name="food"
+								data-desc="Your food is ordered"
+								data-locale="auto"
+								data-currency="usd">	
+								
+							</script>
+							<input type="hidden" name="chargeAmount" value="">
+						</form>
+					</div>
+				</div>
+			</span>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		
+	</div>
+	<div class="col-lg-3">
+		
+	</div>
+</div>
+</div>

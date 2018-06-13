@@ -1,0 +1,31 @@
+{
+  "name": "spicestation",
+  "version": "1.0.0",
+  "description": "website for buying and selling food",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "digicomm",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
+    "ejs-mate": "^2.3.0",
+    "express": "^4.16.2",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "faker": "^4.1.0",
+    "mongoosastic": "^4.3.0",
+    "mongoose": "^4.13.7",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.13.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "session": "^0.1.0"
+  }
+}
